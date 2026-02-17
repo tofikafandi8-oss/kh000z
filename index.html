@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Khodam - 50+ Khodam Lucu & Aman</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;700&family=Metal+Mania&display=swap');
+
+        :root {
+            --ghost-white: #f0f0f0;
+            --blood-red: #ff3131;
+            --poison-purple: #8a2be2;
+            --dark-void: #050505;
+            --gold: #ffd700;
+            --neon-blue: #00f2ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-void);
+            color: var(--ghost-white);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: radial-gradient(circle at center, #1a0a2a 0%, #000000 100%);
+        }
+
+        /* Donation Bar */
+        .donation-bar {
+            width: 100%;
+            background: rgba(138, 43, 226, 0.2);
+            border-bottom: 1px solid var(--poison-purple);
+            padding: 12px 0;
+            font-size: 1.1rem;
+            color: var(--gold);
+            overflow: hidden;
+            white-space: nowrap;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .donation-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* Admin Donator Input */
+        .admin-donator-box {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 10px;
+            background: rgba(0,0,0,0.7);
+            gap: 8px;
+        }
+
+        .admin-donator-box input {
+            width: 70%;
+            max-width: 250px;
+            padding: 10px 15px;
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.9rem;
+            border-radius: 8px;
+            outline: none;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .ok-btn {
+            background: var(--gold);
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+
+        /* Fullscreen Toggle */
+        .fullscreen-btn {
+            position: fixed;
+            top: 115px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--poison-purple);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .fog-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .ghost-float {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            50% { transform: translateY(-100px) rotate(20deg); opacity: 0.6; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            z-index: 1;
+            padding: 10px;
+            margin-top: 160px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Creepster', cursive;
+            font-size: 2.8rem;
+            color: var(--poison-purple);
+            text-shadow: 0 0 15px var(--poison-purple), 3px 3px 0px #000;
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .input-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid var(--poison-purple);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+            margin-bottom: 20px;
+        }
+
+        input.main-input {
+            width: 90%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid var(--poison-purple);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        button.check-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--poison-purple);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .result-display {
+            margin: 15px 0;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #id-target-name {
+            display: block;
+            font-family: 'Metal Mania', cursive;
+            font-size: 2.2rem;
+            background: linear-gradient(to bottom, var(--gold), #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        #id-khodam-result {
+            display: block;
+            font-family: 'Creepster', cursive;
+            font-size: 2.8rem;
+            color: var(--ghost-white);
+            text-shadow: 0 0 10px var(--poison-purple), 0 0 20px var(--poison-purple);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        #id-khodam-description {
+            font-size: 0.85rem;
+            color: #ccc;
+            font-style: italic;
+            padding: 0 10px;
+            line-height: 1.5;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .history-section {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            border-top: 2px solid var(--poison-purple);
+            padding: 10px;
+            box-sizing: border-box;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 10px 5px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-align: right;
+        }
+
+        .history-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .history-khodam {
+            font-family: 'Creepster', cursive;
+            font-size: 1.3rem;
+            color: var(--ghost-white);
+            line-height: 1;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        .not-found-style { 
+            color: var(--blood-red) !important; 
+            text-shadow: 0 0 10px var(--blood-red) !important;
+            animation: flicker 0.2s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="donation-bar">
+        <div class="donation-text" id="donation-list">
+            TERIMA KASIH BANYAK: <b>[MENUNGGU DONATUR...]</b> — SEMOGA BERKAH MELIMPAH!
+        </div>
+    </div>
+
+    <div class="admin-donator-box">
+        <input type="text" id="donator-names" placeholder="NAMA DONATUR..." autocomplete="off">
+        <button class="ok-btn" onclick="submitDonator()">✅</button>
+    </div>
+
+    <div class="fullscreen-btn" onclick="toggleFullscreen()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+    </div>
+
+    <div class="fog-container" id="fog"></div>
+
+    <div class="container">
+        <h1>CEK KHODAM</h1>
+
+        <div class="input-section">
+            <input type="text" id="id-input-name" class="main-input" placeholder="TULIS NAMAMU..." autocomplete="off">
+            <button class="check-btn" onclick="checkKhodam()">TERAWANG!</button>
+        </div>
+
+        <div class="result-display">
+            <div id="id-target-name"></div>
+            <span id="id-khodam-result">SIAP?</span>
+            <div id="id-khodam-description"></div>
+        </div>
+
+        <div class="history-section">
+            <div id="id-history-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Database Khodam (Sudah ditinjau: Aman dari seks & SARA)
+        const khodamList = [
+            "Gorengan Sisa Semalam", "Kabel Data Longgar", "Remahan Kerupuk Palembang", "Sandal Jepit Mesjid", 
+            "Tutup Toples Rengginang", "Korek Api Kosong", "Panci Gosong", "Kipas Angin Berdecit", 
+            "Karet Gelang Nasi Bungkus", "Plastik Es Lilin", "Remote Televisi Tanpa Tutup Baterai", 
+            "Ujung Lakban Bening", "Gayung Kamar Mandi Bocor", "Helm Bogo Kebesaran", "Sumpit Mie Ayam Satu Batang", 
+            "Tutup Galon Isi Ulang", "Keset Selamat Datang", "Botol Minum Ketinggalan", "Charger Handphone Panas", 
+            "Gantungan Baju Patah", "Kancing Baju Copot", "Sisa Sabun Batangan", "Payung Rusak Sebelah", 
+            "Sapu Lidi Patah", "Obeng Bunga Karatan", "Kerdus Bekas Paket", "Botol Saus Sambal Hampir Habis", 
+            "Bantal Guling Kempes", "Tali Sepatu Kepanjangan", "Lakban Kertas", "Sendok Plastik Sekali Pakai", 
+            "Tutup Botol Sosro", "Kabel Setrika Melilit", "Pena Macet", "Klip Kertas Karatan", "Gunting Tumpul", 
+            "Korek Kuping Kapas Lepas", "Baut Kendor", "Spons Cuci Piring Berlendir", "Tisu Basah Kering", 
+            "Karet Penghapus Item", "Kaleng Biskuit Isi Benang", "Sapu Lantai Rontok", "Gelas Plastik Peyot", 
+            "Struk Belanja Tahun Lalu", "Kunci Motor Nyelip", "Senter Mati Baterai", "Kipas Sate Bekas", 
+            "Jepitan Jemuran Lemah", "Ujung Pensil Patah"
+        ];
+        
+        // Database Alasan Kosong (Sudah ditinjau: Aman dari seks & SARA)
+        const emptyReasons = [
+            "Radar kami tidak menemukan siapa pun karena khodam kamu lagi sibuk memisahkan butiran nasi dan jagung di piring makan siang, mending kamu makan sendiri saja dulu.",
+            "Waduh sepertinya khodam kamu lagi antre beli tiket konser band favoritnya di dimensi sebelah, jangan manja deh coba urus apa-apa sendiri ya.",
+            "Mohon maaf tapi khodam kamu lagi ikut lomba lari maraton antar penghuni lemari pakaian, sabar ya dia lagi mengejar garis finis.",
+            "Pantesan sepi soalnya khodam kamu lagi kursus memasak biar bisa bikin seblak yang tidak terlalu pedas, doakan saja dia cepat pintar masaknya.",
+            "Status khodam tidak aktif karena dia lagi sibuk cari kunci gudang yang hilang gara-gara dipinjam teman sebelah, kamu jaga diri baik-baik dulu ya.",
+            "Jangan sedih ya tapi khodam kamu lagi masa percobaan jadi tukang parkir pesawat kertas di taman belakang, cari penggantinya saja di pasar kaget terdekat.",
+            "Peringatan sistem kalau khodam kamu lagi pindah posisi dari pundak ke saku celana soalnya dia lagi ingin santai, kamu sih gerak melulu.",
+            "Gagal memanggil khodam soalnya dia lagi ikut pelatihan cara jadi angin sepoi-sepoi biar kamu tidak kepanasan, mending kamu nyalakan kipas angin saja dulu.",
+            "Laporan terbaru bilang khodam kamu lagi nungguin paket kiriman raket nyamuk yang tidak sampai ke alamat, mungkin kurirnya nyasar ke komplek sebelah.",
+            "Duh pantesan hidupmu berat karena khodam kamu lagi kena skors gara-gara ketahuan membantu kamu menghabiskan camilan di tengah malam.",
+            "Radar kami tidak menemukan siapa pun soalnya khodam kamu lagi belajar bahasa isyarat biar bisa ngobrol lewat gerakan tangan sama kamu.",
+            "Maaf banget tapi khodam kamu lagi magang jadi bayangan figuran di iklan sabun cuci piring, lumayan buat tambah-tambah uang saku katanya.",
+            "Status khodam kosong karena dia lagi kuliah jurusan manajemen waktu biar tidak telat lagi kalau kamu panggil, tunggu dia lulus saja ya.",
+            "Kabar dari radar kalau khodam kamu lagi belajar jadi bintang tamu di acara bincang-bincang dunia sebelah, dia mau terkenal dulu sebelum balik lagi.",
+            "Khodam tidak ditemukan karena dia lagi ikut seminar cara jadi penjaga yang tidak mudah baperan, dia sadar kalau selama ini terlalu sensitif.",
+            "Sistem mendeteksi khodam kamu lagi latihan lompat tali bareng penghuni kolong tempat tidur, lagi program diet biar badannya lebih atletis.",
+            "Jangan berharap banyak karena khodam kamu lagi belajar bela diri soalnya kemarin kalah adu panco sama semut merah, memalukan sekali kan.",
+            "Waduh radar kami bilang khodam kamu lagi latihan vokal biar suara ketawanya lebih merdu didengar, biar telinga kamu tidak sakit pas dia panggil.",
+            "Laporan dari pusat bilang khodam kamu lagi ikut pelatihan cara menghadapi majikan yang hobinya begadang sambil main ponsel, dia kewalahan lihat kamu.",
+            "Maaf khodam kamu lagi liburan ke pantai buat berjemur biar kulitnya agak kecokelatan, katanya lagi ingin ganti suasana baru yang lebih hangat.",
+            "Status khodam tidak tersedia soalnya dia lagi kencan buta lewat aplikasi cari jodoh antar penghuni dimensi, doakan saja dia tidak jomblo lagi.",
+            "Pantesan kamu sendirian soalnya khodam kamu lagi galau berat gara-gara salah kirim pesan ke mantan pacarnya semalam, kasih dia waktu buat merenung.",
+            "Gagal deteksi karena khodam kamu lagi pulang kampung soalnya kangen sama masakan nasi uduk buatan ibunya, nanti kalau sudah kenyang dia pasti balik.",
+            "Sistem bilang khodam kamu lagi nonton pertandingan bola antar komplek di lapangan sebelah, dia butuh hiburan biar tidak jenuh jagain kamu.",
+            "Radar melaporkan khodam kamu lagi ikut lomba makan kerupuk tingkat RT, dia lagi berjuang keras buat bawa pulang hadiah mesin cuci.",
+            "Mohon tunggu sebentar karena khodam kamu lagi perawatan wajah di salon langganan, penampilan harus tetap maksimal biarpun tidak kelihatan.",
+            "Khodam lagi sibuk antre pembagian bensin eceran di pom bensin dimensi sebelah, lumayan buat modal patroli keliling pikiran kamu nanti malam.",
+            "Peringatan sistem kalau khodam kamu lagi sembunyi di dalam mesin cuci soalnya dia ingin merasakan sensasi diputar-putar, jangan dinyalakan dulu ya mesinnya.",
+            "Hasil scan bilang khodam kamu lagi nungguin pengumuman hasil undian berhadiah piring cantik dari toko kelontong, dia sudah lama mengidamkan hadiah itu.",
+            "Waduh khodam kamu lagi terjebak macet parah di jalur lintas antar meja makan, sepertinya ada tumpahan sirup yang bikin jalannya lengket.",
+            "Radar mendeteksi khodam kamu lagi servis sepatu roda gara-gara rodanya lepas sebelah pas lagi kejar-kejaran, terbangnya jadi tidak stabil sekarang.",
+            "Maaf status khodam kamu lagi ganti baju dinas soalnya yang lama sudah kekecilan gara-gara dia kebanyakan makan, dia ingin tampil lebih rapi.",
+            "Gagal memproses khodam soalnya dia lagi kehabisan ide buat bikin kamu senang, coba kamu pikirkan sesuatu yang lucu dulu buat dia.",
+            "Khodam kamu lagi cuci jubah kebesaran gara-gara tidak sengaja ketumpahan kopi susu tadi pagi, baunya bikin dia tidak percaya diri buat kerja.",
+            "Sistem lapor kalau khodam kamu lagi isolasi mandiri soalnya terlalu sering dengar curhatan kamu yang sedih terus, dia butuh asupan energi positif.",
+            "Radar kami menunjukkan khodam kamu lagi cari sinyal internet di atas genteng, mau mabar permainan ular tangga bareng teman-teman sebayanya.",
+            "Mohon maaf khodam kamu lagi nambal ban sepeda motor yang bocor kena paku payung di jalan, perjalanannya menuju tempatmu jadi tertunda deh.",
+            "Khodam tidak aktif karena lagi antre ganti baterai lampu senter buat jaga malam, biar dia tidak menabrak lemari pas kamu lagi tidur nyenyak.",
+            "Status khodam lagi sibuk menghapus file kenangan mantan di dalam ingatan kamu sebagai tugas tambahan, dia merasa itu pekerjaan yang sangat melelahkan.",
+            "Laporan terbaru bilang khodam kamu lagi asyik nonton maraton film dokumenter tentang cara membuat ramuan pengusir kantuk buat majikannya.",
+            "Wah khodam kamu lagi bantu tetangga sebelah nagih utang yang sudah menahun tidak dibayar, lumayan buat tambah-tambah energi katanya.",
+            "Khodam tidak ditemukan soalnya lagi berburu diskon besar di pasar malam, mumpung lagi ada promo beli satu gratis satu untuk item keberuntungan.",
+            "Sistem mendeteksi khodam kamu lagi cari koin yang tidak sengaja nyelip di dalam sofa kamu, mau buat kerokan karena dia merasa kurang enak badan.",
+            "Maaf khodam kamu lagi main catur lawan juara bertahan di gardu ronda dan skornya masih imbang, dia tidak mau beranjak sampai menang.",
+            "Pantesan kosong soalnya khodam kamu lagi sembunyi di balik gorden karena kaget lihat kamu pakai masker wajah pas malam-malam, dia takut sendiri.",
+            "Laporan bilang khodam kamu lagi ikut lomba balap kelereng tingkat nasional, doakan saja dia menang dan bisa beli perlengkapan jaga yang baru.",
+            "Status khodam lagi cari pinjaman di aplikasi daring buat biaya renovasi rumah pohonnya, dia ingin punya tempat tinggal yang lebih nyaman.",
+            "Radar bilang khodam kamu lagi diet ketat dan tidak mau makan gorengan berminyak dulu, dia merasa pipinya sudah mulai tembam belakangan ini.",
+            "Waduh khodam kamu lagi tersesat di dalam lipatan baju di lemari kamu yang berantakan, dia bingung cari jalan keluar dari tumpukan pakaian itu.",
+            "Hasil akhir menunjukkan khodam kamu lagi ikut bimbingan teknis cara menghadapi majikan yang banyak maunya tapi kurang usaha, sabar ya ini cobaan untuknya."
+        ];
+
+        const ghosts = ["👻", "💀", "🦇", "🕷️"];
+        
+        function initGhosts() {
+            const fog = document.getElementById('fog');
+            for(let i=0; i<15; i++) {
+                const span = document.createElement('span');
+                span.className = 'ghost-float';
+                span.innerText = ghosts[Math.floor(Math.random() * ghosts.length)];
+                span.style.left = Math.random() * 100 + 'vw';
+                span.style.top = Math.random() * 100 + 'vh';
+                fog.appendChild(span);
+            }
+        }
+        initGhosts();
+
+        const inputField = document.getElementById('id-input-name');
+        const targetNameDisplay = document.getElementById('id-target-name');
+        const display = document.getElementById('id-khodam-result');
+        const descDisplay = document.getElementById('id-khodam-description');
+        const historyList = document.getElementById('id-history-list');
+
+        function saySomething(text) {
+            const synth = window.speechSynthesis;
+            synth.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'id-ID';
+            utterance.rate = 1.0;
+            synth.speak(utterance);
+        }
+
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkKhodam();
+        });
+
+        function submitDonator() {
+            const donatorInput = document.getElementById('donator-names');
+            let name = donatorInput.value.trim().toUpperCase();
+            if (name) {
+                const donationList = document.getElementById('donation-list');
+                donationList.innerHTML = `TERIMA KASIH BANYAK: <b>✅ ${name}</b> — SEMOGA BERKAH MELIMPAH!`;
+                saySomething("Terima kasih banyak " + name.toLowerCase());
+                donatorInput.value = "";
+            }
+        }
+
+        function checkKhodam() {
+            let name = inputField.value.trim().toUpperCase();
+            if (!name) return;
+
+            targetNameDisplay.innerText = "";
+            display.innerText = "MENERAWANG...";
+            display.classList.remove('not-found-style');
+            descDisplay.innerText = "";
+
+            setTimeout(() => {
+                const roll = Math.floor(Math.random() * 5); // 20% peluang kosong
+                targetNameDisplay.innerText = name; 
+                
+                if (roll === 0) {
+                    const reason = emptyReasons[Math.floor(Math.random() * emptyReasons.length)];
+                    display.innerText = "KOSONG";
+                    display.classList.add('not-found-style');
+                    descDisplay.innerText = reason;
+                    
+                    // Bacakan teks lengkap alasan kosong
+                    saySomething(`${name.toLowerCase()}... khodam kamu kosong... ${reason}`);
+                    
+                    addToHistory(name, "KOSONG");
+                } else {
+                    const khodam = khodamList[Math.floor(Math.random() * khodamList.length)];
+                    display.innerText = khodam;
+                    
+                    saySomething(`${name.toLowerCase()}... khodam kamu adalah... ${khodam.toLowerCase()}`);
+                    
+                    addToHistory(name, khodam);
+                }
+                
+                inputField.value = "";
+            }, 800);
+        }
+
+        function addToHistory(n, k) {
+            const div = document.createElement('div');
+            div.className = 'history-item';
+            div.innerHTML = `<span class="history-name">${n}</span> <span class="history-khodam">${k}</span>`;
+            historyList.prepend(div);
+            if (historyList.children.length > 10) historyList.removeChild(historyList.lastChild);
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+            else document.exitFullscreen();
+        }
+    </script>
+</body>
+</html>
